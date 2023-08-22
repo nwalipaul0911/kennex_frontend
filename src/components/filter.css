@@ -1,0 +1,19 @@
+li.category-list{
+  list-style: none;
+}
+.fa-filter{
+  font-size: small;
+}
+
+input[type="range"]{
+  accent-color: #e9018d;
+}
+label{
+  font-size: small;
+}
+options:hover{
+  background-color: rgb(89, 89, 89);
+}
+select:focus{
+  outline: none;
+}

@@ -1,0 +1,20 @@
+textarea.form-control:focus{
+  box-shadow: none;
+}
+.error-message{
+  border: 3px solid rgb(240, 96, 96);
+  background-color: rgb(211, 99, 99);
+}
+.success-message{
+  border: 3px solid rgb(96, 240, 106);
+  background-color: rgb(106, 211, 99);
+}
+.contact-form{
+  border: none;
+  border-bottom: 1px solid rgb(164, 164, 164);
+  background-color: transparent;
+}
+.contact-form:focus{
+  background-color: transparent;
+  border-bottom: 1px solid #b38039;
+}

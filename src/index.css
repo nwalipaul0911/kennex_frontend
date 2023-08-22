@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Arapey&family=Cookie&family=Dancing+Script:wght@600&family=Nanum+Myeongjo&family=Poppins&display=swap');
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+::placeholder{
+  font-family: 'Arapey', serif;
+}
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Arapey', serif;
+}
+p,span,small,i, a, label{
+  font-family: 'Arapey', serif;
+}
+button, .btn{
+  font-family: 'Arapey', serif;
+}
+.bg-danger{
+  background-color: #b38039 !important;
+}
+.btn-danger{
+  background-color: #b38039;
+  border:none
+}
+.btn-danger:hover{
+  background-color: #e4a44a;
+  color: whitesmoke;
+}
+.text-danger{
+  color: #b38039!important;
+}

@@ -1,0 +1,12 @@
+
+.footer-img{
+  filter: grayscale(10%);
+}
+.nav-link:hover{
+  color: #946c44;
+}
+
+.social-links{
+  display: block;
+  margin-bottom: 10px;
+}

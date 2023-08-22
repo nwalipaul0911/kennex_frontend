@@ -1,0 +1,22 @@
+.bottom-banner{
+  background: black
+}
+.top-banner{
+  background:linear-gradient(to bottom right, rgba(63, 63, 63, 0.759),rgba(183, 181, 181, 0.688),rgb(0, 0, 0));
+  height: fit-content;
+}
+.banner-small-text{
+  font-size: 2rem;
+}
+.banner-large-text{
+  font-size: 5rem;
+  text-shadow: 4px 4px 5px rgb(158, 158, 158);
+}
+.banner-description{
+  font-size: 1.5rem;
+}
+.banner-img-container{
+  aspect-ratio: 4/3;
+  display: grid;
+  place-items: center;
+}

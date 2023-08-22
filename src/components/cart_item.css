@@ -1,0 +1,27 @@
+.cart-item-increment{
+  width: 50%;
+  border: 0.5px rgb(206, 206, 206) solid;
+  outline: none;
+}
+input[type=number]::-webkit-inner-spin-button { opacity: 1; }
+
+
+.cart-item{
+  border-bottom: 0.5px rgb(225, 225, 225) solid;
+}
+.cart-item-control{
+  font-size: 0.75rem;
+  visibility: hidden;
+}
+.cart-item-control:hover{
+  cursor: pointer;
+}
+.cart-item:hover .cart-item-control{
+  visibility: visible;
+}
+
+@media screen and (max-width:650px) {
+  .cart-item-control{
+    visibility: visible;
+  }
+}
