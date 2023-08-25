@@ -11,6 +11,7 @@ const Product = ({ product, scrollPosition }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const mainControls = useAnimation();
+  const hoverControls = useAnimation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -27,35 +28,41 @@ const Product = ({ product, scrollPosition }) => {
   };
   return (
     <motion.div
-      className="card col-10 mx-auto product-card my-4 position-relative"
+      className="card col-10 mx-auto product-card my-4 position-relative border shadow"
       onClick={handleProductNav}
       variants={{ hidden: { scale: 0 }, visible: { scale: 1 } }}
       initial="hidden"
       animate={"visible"}
-      whileHover={{ scale: 1.05 }}
+      onMouseEnter={() => hoverControls.start("hovering")}
+      onMouseLeave={() => hoverControls.start("normal")}
     >
-      <LazyLoadImage
-        src={`${product.image}`}
-        alt="..."
-        effect="blur"
-        className="img-fluid card-img"
-        placeholderSrc=""
-        scrollPosition={scrollPosition}
-      />
+      <div className="card-img">
+        <motion.img
+          src={`${product.image}`}
+          alt="..."
+          effect="blur"
+          className="img-fluid"
+          placeholderSrc=""
+          scrollPosition={scrollPosition}
+          variants={{ normal: { scale: 0.8 }, hovering: { scale: 1 } }}
+          animate={hoverControls}
+          transition={{ type: "spring", stiffness: 200 }}
+        />
+      </div>
 
-      <div className="py-2">
+      <div className="py-2 card-body">
         <div className="">
-          <div>
+          <div className="ps-1">
             <small className="py-0 text-secondary">{product.name}</small>
           </div>
-          <div>
+          <div className="ps-1">
             <i className="fw-bold">N {product.price}</i>
           </div>
         </div>
 
         <div className="mx-auto mt-2">
           <button
-            className="btn btn-sm btn-dark col-12 product-button rounded-0 shadow"
+            className="btn btn-sm btn-dark col-12 product-button rounded-0"
             onClick={(e) => handleCartIncrement(e)}
           >
             Add to cart

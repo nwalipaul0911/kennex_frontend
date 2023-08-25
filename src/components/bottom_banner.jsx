@@ -41,9 +41,9 @@ const BottomBanner = ({ store, scrollPosition }) => {
         {banners?.map(
           (banner, index) =>
             index == carouselstate && (
-              <div className="row g-0 bottom-banner rounded" key={index}>
+              <div className="row g-0 bottom-banner rounded " key={index}>
                 <motion.div className="col-12 col-md-6">
-                  <div className="mx-auto col-7 banner-img-container img-thumbnail shadow p-0">
+                  <div className="mx-auto bg-transparent border-0 col-7 banner-img-container img-thumbnail shadow p-0">
                     <LazyLoadImage
                       src={banner?.image}
                       alt="..."

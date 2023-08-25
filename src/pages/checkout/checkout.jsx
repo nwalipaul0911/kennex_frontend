@@ -21,7 +21,7 @@ const Checkout = () => {
     state: "",
     town: "",
   });
-  
+
   // form data handling function
   const handleFormData = (event) => {
     const { name, value } = event.target;
@@ -31,7 +31,7 @@ const Checkout = () => {
     });
   };
   useEffect(() => {
-      setErrorMessage(null);
+    setErrorMessage(null);
   }, [formData]);
   // Get shipping rates from backend
   const getShippingRate = async () => {
@@ -133,29 +133,39 @@ const Checkout = () => {
 
   return (
     <>
-      <div className="container-fluid  my-5 py-5">
+      <div className="container my-5 shadow">
         <div className="row">
-          <div className="col-md-4 col-sm-12 order-md-2">
+          <div className="col-md-6 col-sm-12 bg-light py-3">
             <div className="col-10 mx-auto">
-              <div className="py-2 cart-header">
-                <h5 className="text-dark">My Cart</h5>
-              </div>
-              {cart_items.length ? (
-                cart_items.map((item, index) => (
-                  <CartItem key={index} item={item} />
-                ))
-              ) : (
-                <div className="mt-5">
-                  <p className="text-center"> Cart empty</p>
+              <div>
+                <div className="py-2 cart-header">
+                  <h5 className="text-dark">My Cart</h5>
                 </div>
-              )}
+                {cart_items.length ? (
+                  cart_items.map((item, index) => (
+                    <CartItem key={index} item={item} />
+                  ))
+                ) : (
+                  <div className="mt-5">
+                    <p className="text-center"> Cart empty</p>
+                  </div>
+                )}
+              </div>
+              <div className="mt-5">
+                <div className="py-2 cart-header mb-3">
+                  <h5 className="text-dark">Summary</h5>
+                </div>
+                <p>Sub-total: {subtotal}</p>
+                <p>Delivery: {shippingFee}</p>
+                <h2>Total: {amount}</h2>
+              </div>
             </div>
           </div>
-          <div className="col-md-8 col-sm-12 ">
+          <div className="col-md-6 col-sm-12 bg-light py-3">
             <div className="container-fluid">
               <div className="row">
                 <div className="col-10 mx-auto">
-                  <div className="py-2 cart-header col-12">
+                  <div className="py-2 col-12">
                     <h5 className="text-dark">Checkout form</h5>
                   </div>
                   <form className="col-12 mt-3" onSubmit={handleCheckout}>
@@ -166,79 +176,51 @@ const Checkout = () => {
                         {errorMessage}
                       </p>
                     )}
-                    <div className="row mb-3">
-                      <div className="col-sm-3 col-md-2">
-                        <label htmlFor="recipient">Fullname:</label>
-                      </div>
+                    <input
+                      type="text"
+                      name="recipient"
+                      id="recipient"
+                      value={formData.recipient}
+                      className="form-control col-10 rounded-0 py-3"
+                      placeholder="John Doe"
+                      onChange={handleFormData}
+                      required
+                    />
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      value={formData.email}
+                      className="form-control col-10 rounded-0 py-3"
+                      placeholder="JohnDoe35@example.com"
+                      onChange={handleFormData}
+                      required
+                    />
+                    <input
+                      type="tel"
+                      name="phone"
+                      id="phone"
+                      value={formData.phone}
+                      className="form-control col-10 rounded-0 py-3"
+                      placeholder="080xxxxxxx1"
+                      onChange={handleFormData}
+                      required
+                    />
+                    <input
+                      type="text"
+                      name="address"
+                      id="address"
+                      value={formData.address}
+                      className="form-control col-10 rounded-0 py-3"
+                      placeholder="32, example street, example town"
+                      onChange={handleFormData}
+                      required
+                    />
+                    <div className="row pt-3">
                       <div className="col">
-                        <input
-                          type="text"
-                          name="recipient"
-                          id="recipient"
-                          value={formData.recipient}
-                          className="form-control col-10 rounded-0"
-                          placeholder="John Doe"
-                          onChange={handleFormData}
-                          required
-                        />
+                        <label htmlFor="address">State :</label>
                       </div>
-                    </div>
-                    <div className="row mb-3">
-                      <div className="col-sm-3 col-md-2">
-                        <label htmlFor="email">E-mail:</label>
-                      </div>
-                      <div className="col">
-                        <input
-                          type="email"
-                          name="email"
-                          id="email"
-                          value={formData.email}
-                          className="form-control col-10 rounded-0"
-                          placeholder="JohnDoe35@example.com"
-                          onChange={handleFormData}
-                          required
-                        />
-                      </div>
-                    </div>
-                    <div className="row mb-3">
-                      <div className="col-sm-3 col-md-2">
-                        <label htmlFor="phone">Phone:</label>
-                      </div>
-                      <div className="col">
-                        <input
-                          type="tel"
-                          name="phone"
-                          id="phone"
-                          value={formData.phone}
-                          className="form-control col-10 rounded-0"
-                          placeholder="080xxxxxxx1"
-                          onChange={handleFormData}
-                          required
-                        />
-                      </div>
-                    </div>
-                    <div className="row mb-3">
-                      <div className="col-sm-3 col-md-2">
-                        <label htmlFor="address">Address:</label>
-                      </div>
-                      <div className="col">
-                        <input
-                          type="text"
-                          name="address"
-                          id="address"
-                          value={formData.address}
-                          className="form-control col-10 rounded-0"
-                          placeholder="32, example street, example town"
-                          onChange={handleFormData}
-                          required
-                        />
-                      </div>
-                    </div>
-                    <div className="row mb-3">
-                      <div className="col-sm-3 col-md-2">
-                        <label htmlFor="address">State:</label>
-                      </div>
-                      <div className="col">
+                      <div className="col-10">
                         <select
                           name="state"
                           id="state"
@@ -256,11 +238,11 @@ const Checkout = () => {
                         </select>
                       </div>
                     </div>
-                    <div className="row mb-3">
-                      <div className="col-sm-3 col-md-2">
-                        <label htmlFor="address">Town:</label>
-                      </div>
+                    <div className="row pt-3">
                       <div className="col">
+                        <label htmlFor="address">Town :</label>
+                      </div>
+                      <div className="col-10">
                         <select
                           name="town"
                           id="town"
@@ -278,54 +260,12 @@ const Checkout = () => {
                         </select>
                       </div>
                     </div>
-                    <div className="bg-light border p-2">
-                      <div className="row">
-                        <div className="col-sm-3 col-md-2">
-                          <label htmlFor="shipping" className="">
-                            Shipping:
-                          </label>
-                        </div>
-                        <div className="col-auto">
-                          <p name="shipping" className="" id="shipping">
-                            N {shippingFee}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-sm-3 col-md-2">
-                          <label htmlFor="subtotal" className="">
-                            Subtotal:
-                          </label>
-                        </div>
-                        <div className="col-auto">
-                          <p name="subtotal" className="" id="subtotal">
-                            N {subtotal}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-sm-3 col-md-2">
-                          <label htmlFor="total" className="fs-2">
-                            Total:
-                          </label>
-                        </div>
-                        <div className="col-auto">
-                          <p name="total" className="fs-2" id="total">
-                            N {amount}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="row mb-3 ">
-                      <div className="col">
-                        <button
-                          type="submit"
-                          className={`btn form-control btn-dark rounded-0`}
-                        >
-                          Checkout
-                        </button>
-                      </div>
-                    </div>
+                    <button
+                      type="submit"
+                      className="btn form-control btn-dark rounded-0 mt-3"
+                    >
+                      Checkout
+                    </button>
                   </form>
                 </div>
               </div>

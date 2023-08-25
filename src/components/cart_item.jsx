@@ -5,21 +5,38 @@ import { modifyCart } from "../slices/cart_slice";
 import { useMemo } from "react";
 import { removeFromCart } from "../slices/cart_slice";
 const CartItem = ({ item }) => {
+  const [quantity, setQuantity] = useState(item.quantity);
   const dispatch = useDispatch();
-  const subtotal = useMemo(
-    () => item.price * item.quantity,
-    [item]
-  );
+  const subtotal = useMemo(() => {
+    let x = item.price * item.quantity;
+    return isNaN(x) ? '_' : x;
+    return x
+  }, [item]);
   useEffect(() => {
     subtotal == 0 ? dispatch(removeFromCart(item)) : null;
   }, [subtotal]);
+  const handleQuantity = (e) => {
+    const value = parseInt(e.target.value);
+    setQuantity(value);
+    dispatch(modifyCart({ ...item, quantity: value }));
+  };
+  const handleIncrement = (t) => {
+    if (t == "+") {
+      setQuantity(quantity + 1);
+      dispatch(modifyCart({ ...item, quantity: quantity + 1 }));
+    } else {
+      setQuantity(quantity - 1);
+      dispatch(modifyCart({ ...item, quantity: quantity - 1 }));
+    }
+  };
 
   return (
     <>
       <div className="cart-item col-10 mx-auto my-3 position-relative pb-3">
         <i
           className="fa-solid fa-x position-absolute top-0 end-0 cart-item-control"
-          onClick={() => dispatch(removeFromCart(item))} title="Remove from cart"
+          onClick={() => dispatch(removeFromCart(item))}
+          title="Remove from cart"
         ></i>
         <div className="container-fluid">
           <div className="row">
@@ -35,29 +52,34 @@ const CartItem = ({ item }) => {
                   className="text-dark fw-bold"
                   style={{ display: "block" }}
                 >
-                  N {item.price}
+                  N{subtotal}{" "}
+                  <i className="text-secondary ps-3">N{item.price}/unit</i>
                 </small>
-                <div className="mb-3">
+                <div className="my-3">
+                  <button
+                    className="btn btn-sm btn-outline-dark rounded-0 py-0"
+                    onClick={() => handleIncrement("-")}
+                  >
+                    <i className="fa-solid fa-minus increments"></i>
+                  </button>
                   <input
                     type="number"
-                    name="quantity"
-                    id="quantity"
-                    className="cart-item-increment"
-                    value={item.quantity}
-                    onChange={(e) =>
-                      dispatch(
-                        modifyCart({ ...item, quantity: e.target.value })
-                      )
-                    }
+                    name=""
+                    id=""
+                    value={quantity}
+                    className="bg-transparent border-1 col-5 rounded-0 input"
+                    onChange={handleQuantity}
                   />
+                  <button
+                    className="btn btn-sm btn-outline-dark rounded-0 py-0"
+                    onClick={() => handleIncrement("+")}
+                  >
+                    <i className="fa-solid fa-plus increments"></i>
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-          <i className="subtotal fs-4">Subtotal </i>
-          <p className="text-dark" id="subtotal">
-            N {subtotal}
-          </p>
         </div>
       </div>
     </>

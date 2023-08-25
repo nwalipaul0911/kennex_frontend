@@ -3,8 +3,17 @@
   border: 0.5px rgb(206, 206, 206) solid;
   outline: none;
 }
-input[type=number]::-webkit-inner-spin-button { opacity: 1; }
-
+input[type="number"]::-webkit-inner-spin-button{
+  visibility: hidden;
+}
+.fa-solid.increments{
+  font-size: 0.5rem;
+}
+input.input{
+  border : 1px solid rgb(63, 63, 63);
+  outline: none;
+  text-align: center;
+}
 
 .cart-item{
   border-bottom: 0.5px rgb(225, 225, 225) solid;

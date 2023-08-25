@@ -1,5 +1,6 @@
 import "../shop/shop.css";
 import Product from "../shop/product";
+import About from "../about/about";
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { setProducts } from "../../slices/products_slice";
@@ -21,7 +22,8 @@ const Home = ({ scrollPosition }) => {
   return (
     <>
       <TopBanner store={store} />
-      <div className="container-fluid py-5 mt-5">
+      <About />
+      <div className="container-fluid py-5">
         <div className="row col-md-10 mx-auto">
           <h1 className="text-center text-dark my-4">Featured Products</h1>
           {currentItems.map((product, index) => (

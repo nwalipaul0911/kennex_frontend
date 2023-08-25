@@ -1,14 +1,16 @@
-.product-button{
+/* .product-button{
   visibility: hidden;
 }
 .product-card:hover .product-button{
   visibility: visible;
-}
+} */
 .card:hover{
   cursor: pointer;
 }
 .card-img{
-  background-color: rgb(183, 181, 181);;
+  aspect-ratio: 1/1;
+  display: grid;
+  place-items: center;
 }
 
 @media screen and (max-width:650px) {

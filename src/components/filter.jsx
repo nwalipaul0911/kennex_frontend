@@ -30,12 +30,8 @@ const Filter = ({ store, setFiltered }) => {
 
   return (
     <>
-      <h5 className="text-center">
-        Filter by category <i className="fa-solid fa-filter"></i>
-      </h5>
-      <hr />
       <a
-        className="btn btn-sm btn-outline-secondary rounded-pill px-3"
+        className="btn btn-sm btn-outline-light rounded-0 px-3"
         onClick={() => setCurrCategory("")}
       >
         All
@@ -43,14 +39,12 @@ const Filter = ({ store, setFiltered }) => {
       {categories.map((category, index) => (
         <a
           key={index}
-          className="btn btn-sm btn-outline-secondary rounded-pill px-3"
+          className="btn btn-sm btn-outline-light rounded-0 px-3"
           onClick={() => setCurrCategory(category.id)}
         >
           {category.name}
         </a>
       ))}
-
-      <hr />
     </>
   );
 };

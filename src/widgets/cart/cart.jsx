@@ -22,7 +22,7 @@ const Cart = ({ setSidebarState, cartView }) => {
             ></motion.i>
           </div>
           <div className="cart-header-text col-9">
-            <h4 className="text-light">Your Cart</h4>
+            <h4 className="text-light">Cart</h4>
           </div>
         </div>
       </div>

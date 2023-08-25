@@ -27,48 +27,52 @@ const Shop = ({ scrollPosition }) => {
   };
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        
-        <div className="col pb-5 order-md-2">
-          <div className="row px-4">
-            <h1 className="text-center text-dark my-4">Products</h1>
-            {currentItems.map((product, index) => (
-              <AnimatePresence>
-                <motion.div exit={{ opacity: 0 }} className="col-6 col-md-3">
-                  <Product
-                    key={index}
-                    product={product}
-                    scrollPosition={scrollPosition}
-                  />
-                </motion.div>
-              </AnimatePresence>
-            ))}
+    <div className="container">
+      <div className="col pb-5 order-md-2">
+        <div className="row px-4 border">
+          <h1 className="text-center text-dark my-4">Products</h1>
+          <div className="bg-dark d-flex justify-content-between p-3 border">
+            <h5 className="text-light">
+              Filter <i className="fa-solid fa-filter"></i>
+            </h5>
+            <div>
+              <Filter store={store.products} setFiltered={setFiltered} />
+            </div>
           </div>
-          <ReactPaginate
-            nextLabel="next >"
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={5}
-            marginPagesDisplayed={2}
-            pageCount={pageCount}
-            previousLabel="< previous"
-            pageClassName="page-item"
-            pageLinkClassName="page-link"
-            previousClassName="page-item"
-            previousLinkClassName="page-link"
-            nextClassName="page-item"
-            nextLinkClassName="page-link"
-            breakLabel="..."
-            breakClassName="page-item"
-            breakLinkClassName="page-link"
-            containerClassName="pagination"
-            activeClassName="active"
-            activeLinkClassName="active"
-            renderOnZeroPageCount={null}
-          />
-        </div>
-        <div className="col-md-3 bg-light p-3 border">
-          <Filter store={store.products} setFiltered={setFiltered} />
+          {currentItems.map((product, index) => (
+            <AnimatePresence key={index}>
+              <motion.div exit={{ opacity: 0 }} className="col-6 col-md-3">
+                <Product
+                  key={index}
+                  product={product}
+                  scrollPosition={scrollPosition}
+                />
+              </motion.div>
+            </AnimatePresence>
+          ))}
+          <div className="mb-3">
+            <ReactPaginate
+              nextLabel="next >"
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={5}
+              marginPagesDisplayed={2}
+              pageCount={pageCount}
+              previousLabel="< previous"
+              pageClassName="page-item"
+              pageLinkClassName="page-link"
+              previousClassName="page-item"
+              previousLinkClassName="page-link"
+              nextClassName="page-item"
+              nextLinkClassName="page-link"
+              breakLabel="..."
+              breakClassName="page-item"
+              breakLinkClassName="page-link"
+              containerClassName="pagination"
+              activeClassName="active"
+              activeLinkClassName="active"
+              renderOnZeroPageCount={null}
+            />
+          </div>
         </div>
       </div>
     </div>
