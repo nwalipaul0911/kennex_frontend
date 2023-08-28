@@ -2,16 +2,16 @@ import "./banner.css";
 import { motion, spring, useAnimation, useInView } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { modifyCart } from "../slices/cart_slice";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 const TopBanner = ({ store }) => {
   const url = import.meta.env.VITE_BACKEND_URL;
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const [banners, setBanners] = useState([]);
   const [setSidebarState] = useOutletContext();
-  const [carouselstate, setCarouselState] = useState(0);
   useEffect(() => {
     getBannerdetails();
   }, []);
@@ -23,7 +23,8 @@ const TopBanner = ({ store }) => {
   const handleBuyNow = (product_id) => {
     const product = store.products.find((product) => product.id == product_id);
     dispatch(modifyCart({ ...product, quantity: 1 }));
-    setSidebarState();
+    navigate('/checkout')
+    
   };
   return (
     <>
@@ -63,8 +64,8 @@ const TopBanner = ({ store }) => {
                       <motion.button
                         animate={{ y: "0%", opacity:1 }}
                         initial={{ y: "100%", opacity:0 }}
-                        transition={{duration:1, type:spring}}
-                        whileHover={{ scale: [1.05,1,1.05] }}
+                        transition={{duration:1, type:spring, stiffness: 500}}
+                        whileHover={{ scale: [1.05,1,1.05, 1] }}
                         className="btn btn-danger px-5 rounded-0 shadow top-banner-button border-0"
                         onClick={() => handleBuyNow(banner.product)}
                       >
@@ -75,7 +76,7 @@ const TopBanner = ({ store }) => {
                 </div>
                 <div className="col-12 col-md-6 mt-5 mt-md-0 position-relative bottom-0">
                   <motion.div
-                    className="mx-auto col-8 banner-img-container mb-5 shadow"
+                    className="mx-auto col-8 banner-img-container mb-5"
                     animate={{ opacity: 1, y:'5%' }}
                     initial={{ opacity: 0 }}
                     transition={{ delay: 2, duration: 1 }}

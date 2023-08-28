@@ -3,3 +3,33 @@
   background-size: cover;
   background-attachment: fixed;
 }
+.about-img-container{
+  height: fit-content;
+}
+.gallery{
+  aspect-ratio: 1/1;
+  position: absolute;
+  width: inherit;
+  border-radius: 50%;
+  box-shadow: 0 0 20px 10px rgba(81, 74, 74, 0.293);
+  filter: grayscale(30%);
+  scale: 1
+}
+.img-1{
+  top:20px;
+  left:0;
+}
+.img-2{
+  top: 20px;
+  right: 0;
+}
+.img-3{
+  bottom:-75px;
+  left: 10px;
+}
+@media screen and (max-width: 700px) {
+  .gallery{
+    position: relative;
+    scale: 1.2
+  }
+}

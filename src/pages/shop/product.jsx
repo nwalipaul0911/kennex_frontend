@@ -3,7 +3,6 @@ import { modifyCart } from "../../slices/cart_slice";
 import "./product.css";
 import { useNavigate } from "react-router-dom";
 import { useRef, useEffect } from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { motion, useAnimation, useInView } from "framer-motion";
 
@@ -28,7 +27,7 @@ const Product = ({ product, scrollPosition }) => {
   };
   return (
     <motion.div
-      className="card col-10 mx-auto product-card my-4 position-relative border shadow"
+      className="card col-10 mx-auto product-card my-4 position-relative border rounded-0"
       onClick={handleProductNav}
       variants={{ hidden: { scale: 0 }, visible: { scale: 1 } }}
       initial="hidden"
@@ -36,7 +35,7 @@ const Product = ({ product, scrollPosition }) => {
       onMouseEnter={() => hoverControls.start("hovering")}
       onMouseLeave={() => hoverControls.start("normal")}
     >
-      <div className="card-img">
+      <div className="card-img rounded-0">
         <motion.img
           src={`${product.image}`}
           alt="..."
@@ -45,8 +44,9 @@ const Product = ({ product, scrollPosition }) => {
           placeholderSrc=""
           scrollPosition={scrollPosition}
           variants={{ normal: { scale: 0.8 }, hovering: { scale: 1 } }}
+          initial={"normal"}
           animate={hoverControls}
-          transition={{ type: "spring", stiffness: 200 }}
+          transition={{ type: "tween" }}
         />
       </div>
 

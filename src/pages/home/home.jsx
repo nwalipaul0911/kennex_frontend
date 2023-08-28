@@ -1,14 +1,17 @@
 import "../shop/shop.css";
 import Product from "../shop/product";
 import About from "../about/about";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import { setProducts } from "../../slices/products_slice";
 import { useDispatch } from "react-redux";
 import TopBanner from "../../components/top_banner";
 import BottomBanner from "../../components/bottom_banner";
-import { trackWindowScroll } from "react-lazy-load-image-component";
-import { AnimatePresence, motion } from "framer-motion";
+import {
+  trackWindowScroll,
+  LazyLoadComponent,
+} from "react-lazy-load-image-component";
+import { motion } from "framer-motion";
 
 const Home = ({ scrollPosition }) => {
   const store = useLoaderData();
@@ -22,12 +25,15 @@ const Home = ({ scrollPosition }) => {
   return (
     <>
       <TopBanner store={store} />
-      <About />
+      <LazyLoadComponent>
+        <About />
+      </LazyLoadComponent>
+
       <div className="container-fluid py-5">
         <div className="row col-md-10 mx-auto">
           <h1 className="text-center text-dark my-4">Featured Products</h1>
           {currentItems.map((product, index) => (
-            <div className="col-6 col-md-3">
+            <div className="col-6 col-md-3" key={index}>
               <Product
                 key={index}
                 product={product}

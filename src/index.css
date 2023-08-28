@@ -10,14 +10,15 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 ::placeholder{
   font-family: 'Arapey', serif;
 }
-h1,h2,h3,h4,h5,h6{
-  font-family: 'Arapey', serif;
+h2,h3,h4,h5,h6{
+  font-family: 'Dancing Script', cursive;
 }
-p,span,small,i, a, label{
+h1, p,span,small,i, a, label{
   font-family: 'Arapey', serif;
 }
 button, .btn{
@@ -36,4 +37,7 @@ button, .btn{
 }
 .text-danger{
   color: #b38039!important;
+}
+.fa-solid:hover{
+  cursor: pointer;
 }

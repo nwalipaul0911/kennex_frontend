@@ -1,9 +1,3 @@
-/* .product-button{
-  visibility: hidden;
-}
-.product-card:hover .product-button{
-  visibility: visible;
-} */
 .card:hover{
   cursor: pointer;
 }
@@ -11,10 +5,5 @@
   aspect-ratio: 1/1;
   display: grid;
   place-items: center;
-}
-
-@media screen and (max-width:650px) {
-  .product-button{
-    visibility: visible;
-  }
+  background: rgb(168, 168, 168);
 }

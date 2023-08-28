@@ -20,7 +20,7 @@ const Navbar = ({ setSidebarState }) => {
   const search_results_panel =
     searchResult.length > 0 ? "search-panel-open" : "search-panel-close";
   return (
-    <nav className="navbar navbar-expand-lg bg-dark py-1 shadow position-sticky top-0">
+    <nav className="navbar navbar-expand-lg bg-dark py-1 shadow">
       <NavLink to="/" className="navbar-brand mx-auto ms-md-5" href="#">
         <img src={brand_logo} alt="Krishbeauty" className="brand-logo" />
       </NavLink>
