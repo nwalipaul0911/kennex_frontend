@@ -21,7 +21,14 @@ const Item = () => {
   };
   const handleBuyNow = () => {
     dispatch(modifyCart({ ...item, quantity: quantity }));
-    navigate('/checkout')
+    navigate("/checkout");
+  };
+  const handleIncrement = (t) => {
+    if (t == "+") {
+      setQuantity(quantity + 1);
+    } else {
+      setQuantity(quantity - 1);
+    }
   };
   return (
     <div className="container">
@@ -43,15 +50,27 @@ const Item = () => {
                   <label htmlFor="quantity">Quantity</label>
                 </div>
 
-                <div>
+                <div className="my-3">
+                  <i
+                    className="btn btn-sm btn-outline-dark rounded-0 py-0"
+                    onClick={() => handleIncrement("-")}
+                  >
+                    <i className="fa-solid fa-minus increments"></i>
+                  </i>
                   <input
                     type="number"
-                    name="quantity"
-                    id="quantity"
-                    min={1}
+                    name=""
+                    id=""
                     value={quantity}
+                    className="bg-transparent border-1 col-2 rounded-0 input"
                     onChange={(e) => setQuantity(e.target.value)}
                   />
+                  <i
+                    className="btn btn-sm btn-outline-dark rounded-0 py-0"
+                    onClick={() => handleIncrement("+")}
+                  >
+                    <i className="fa-solid fa-plus increments"></i>
+                  </i>
                 </div>
               </form>
             </div>
@@ -70,10 +89,10 @@ const Item = () => {
               </button>
             </div>
             <div className="mt-4 col-12">
-              <h6>Description</h6>
+              <h5>Description</h5>
               <p>
-                {/* {item.description.slice(0, 1).toUpperCase() +
-                  item.description.slice(1)} */}
+                {item.description.slice(0, 1).toUpperCase() +
+                  item.description.slice(1)}
               </p>
             </div>
           </div>

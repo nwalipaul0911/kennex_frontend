@@ -9,23 +9,21 @@ const CartItem = ({ item }) => {
   const dispatch = useDispatch();
   const subtotal = useMemo(() => {
     let x = item.price * item.quantity;
-    return isNaN(x) ? '_' : x;
+    return isNaN(x) ? "_" : x;
     return x
   }, [item]);
   useEffect(() => {
     subtotal == 0 ? dispatch(removeFromCart(item)) : null;
+    setQuantity(item.quantity)
   }, [subtotal]);
   const handleQuantity = (e) => {
     const value = parseInt(e.target.value);
-    setQuantity(value);
     dispatch(modifyCart({ ...item, quantity: value }));
   };
   const handleIncrement = (t) => {
     if (t == "+") {
-      setQuantity(quantity + 1);
       dispatch(modifyCart({ ...item, quantity: quantity + 1 }));
     } else {
-      setQuantity(quantity - 1);
       dispatch(modifyCart({ ...item, quantity: quantity - 1 }));
     }
   };
