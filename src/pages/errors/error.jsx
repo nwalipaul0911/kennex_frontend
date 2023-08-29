@@ -1,6 +1,6 @@
 import { useRouteError } from "react-router-dom";
 import { Link } from "react-router-dom";
-import error404 from "../../assets/images/error-404.jpg";
+import error404 from "../../assets/images/404_err.jpeg";
 import "./errors.css";
 
 const ErrorPage = () => {
