@@ -40,8 +40,8 @@ const Footer = () => {
           <div className="col-12 col-md-3">
             <div className="col-8 mx-lg-auto text-muted mt-4 mt-lg-0">
               <h5 className="text-danger mb-3">Customer Service</h5>
-              <p>Tel: 09037399585</p>
-              <p>Email: Krishbeauty@gmail.com</p>
+              <p>Tel: 08123853008</p>
+              <p>Email: Kenexbeauty@gmail.com</p>
             </div>
           </div>
           <div className="col-md-3 text-secondary">
