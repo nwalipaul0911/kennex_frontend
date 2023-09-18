@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./filter.css";
 
-const Filter = ({ store, setFiltered }) => {
+const Filter = ({ store, setFiltered, setItemOffset }) => {
   const [categories, setCategories] = useState([]);
   const [currCategory, setCurrCategory] = useState("");
   const [min, setMin] = useState(0);
@@ -22,6 +22,7 @@ const Filter = ({ store, setFiltered }) => {
         : item.category == item.category
     );
     setFiltered(filtered);
+    setItemOffset(0)
   };
   useEffect(() => {
     categories == "" ? getCategories() : null;

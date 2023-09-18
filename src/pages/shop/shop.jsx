@@ -36,7 +36,7 @@ const Shop = ({ scrollPosition }) => {
               Filter <i className="fa-solid fa-filter"></i>
             </h5>
             <div>
-              <Filter store={store.products} setFiltered={setFiltered} />
+              <Filter store={store.products} setFiltered={setFiltered} setItemOffset={setItemOffset} />
             </div>
           </div>
           {currentItems.map((product, index) => (
